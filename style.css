@@ -14,10 +14,12 @@ body {
   margin: 40px auto 0 auto;
   background: rgba(30, 44, 80, 0.95);
   border-radius: 18px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 0 4px #00eaff22;
+  border: 2px solid #7f53ac33;
   padding: 32px 24px 24px 24px;
   position: relative;
   z-index: 2;
+  backdrop-filter: blur(2px);
 }
 
 h1 {
@@ -25,7 +27,21 @@ h1 {
   font-size: 2.2rem;
   letter-spacing: 2px;
   margin-bottom: 18px;
-  text-shadow: 0 2px 16px #00eaff99;
+  text-shadow: 0 2px 16px #00eaff99, 0 0 2px #fff;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(90deg, #00eaff, #7f53ac, #00eaff);
+  background-size: 200% 200%;
+ -webkit-background-clip: text;
+ background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: magic-gradient 3s linear infinite;
+}
+
+@keyframes magic-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .stats {
@@ -192,5 +208,63 @@ footer {
   100% {
     transform: scale(1);
     opacity: 0;
+  }
+}
+
+/* Logo styling for a magical effect */
+.logo {
+  display: block;
+  margin: 32px auto 0 auto;
+  max-width: 160px;
+  width: 60%;
+  height: auto;
+  filter: drop-shadow(0 0 24px #7f53ac88) drop-shadow(0 0 8px #00eaff88);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.06) rotate(-3deg);
+  box-shadow: 0 0 32px 8px #00eaff55;
+  filter: drop-shadow(0 0 36px #00eaffcc);
+}
+
+/* Logo on the right side of the site */
+.right-logo {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  margin: 0;
+  max-width: 120px;
+  width: 20vw;
+  height: auto;
+  z-index: 10;
+  filter: drop-shadow(0 0 24px #7f53ac88) drop-shadow(0 0 8px #00eaff88);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.right-logo:hover {
+  transform: scale(1.06) rotate(-3deg);
+  box-shadow: 0 0 32px 8px #00eaff55;
+  filter: drop-shadow(0 0 36px #00eaffcc);
+}
+
+/* Responsive logo size for mobile */
+@media (max-width: 600px) {
+  .logo {
+    max-width: 90px;
+    width: 40vw;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .right-logo {
+    top: 10px;
+    right: 10px;
+    max-width: 60px;
+    width: 18vw;
   }
 }
